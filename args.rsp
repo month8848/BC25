@@ -1,0 +1,8 @@
+-project:C:\Users\cyuan\Documents\AL\ALProject29
+-packagecachepath:C:\Users\cyuan\Documents\AL\ALProject29\.alpackages
+-serviceuri:https://orgbc9003d7.crm7.dynamics.com
+-clientid:052a59d7-6288-40e7-a7b0-e401a7bc095a
+-redirecturi:"msal052a59d7-6288-40e7-a7b0-e401a7bc095a://auth"
+-entities:crcff_item
+-baseid:50310
+-tabletype:CDS

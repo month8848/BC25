@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TrailBalanceLCY">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TrailBalanceLCY</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TrailBalanceLCY</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TrailBalanceACYSheet">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TrailBalanceACYSheet</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TrailBalanceACYSheet</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TrailBalanceACY">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TrailBalanceACY</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TrailBalanceACY</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DataRetived">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DataRetived</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DataRetived</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AccountNumberCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AccountNumberCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AccountNumberCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AccountNameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AccountNameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AccountNameCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AccountTypeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AccountTypeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AccountTypeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="GDim1CodeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>GDim1CodeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>GDim1CodeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="GDim2CodeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>GDim2CodeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>GDim2CodeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PreBalanceCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PreBalanceCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PreBalanceCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DebitAmountCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DebitAmountCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DebitAmountCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CreditAmountCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CreditAmountCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CreditAmountCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EndBalanceCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>EndBalanceCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>EndBalanceCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dim1CodeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dim1CodeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dim1CodeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dim1NameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dim1NameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dim1NameCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dim2CodeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dim2CodeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dim2CodeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Dim2NameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Dim2NameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Dim2NameCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="AccountNumber">
+          <DataField>AccountNumber</DataField>
+        </Field>
+        <Field Name="AccountName">
+          <DataField>AccountName</DataField>
+        </Field>
+        <Field Name="AccountType">
+          <DataField>AccountType</DataField>
+        </Field>
+        <Field Name="GDim1Code">
+          <DataField>GDim1Code</DataField>
+        </Field>
+        <Field Name="GDim2Code">
+          <DataField>GDim2Code</DataField>
+        </Field>
+        <Field Name="PreBalance">
+          <DataField>PreBalance</DataField>
+        </Field>
+        <Field Name="PreBalanceFormat">
+          <DataField>PreBalanceFormat</DataField>
+        </Field>
+        <Field Name="DebitAmount">
+          <DataField>DebitAmount</DataField>
+        </Field>
+        <Field Name="DebitAmountFormat">
+          <DataField>DebitAmountFormat</DataField>
+        </Field>
+        <Field Name="CreditAmount">
+          <DataField>CreditAmount</DataField>
+        </Field>
+        <Field Name="CreditAmountFormat">
+          <DataField>CreditAmountFormat</DataField>
+        </Field>
+        <Field Name="EndBalance">
+          <DataField>EndBalance</DataField>
+        </Field>
+        <Field Name="EndBalanceFormat">
+          <DataField>EndBalanceFormat</DataField>
+        </Field>
+        <Field Name="Dim1Code">
+          <DataField>Dim1Code</DataField>
+        </Field>
+        <Field Name="Dim1Name">
+          <DataField>Dim1Name</DataField>
+        </Field>
+        <Field Name="Dim2Code">
+          <DataField>Dim2Code</DataField>
+        </Field>
+        <Field Name="Dim2Name">
+          <DataField>Dim2Name</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
